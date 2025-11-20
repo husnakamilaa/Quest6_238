@@ -15,6 +15,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.arsitekturmvvm.model.DataJK.JenisK
 import com.example.arsitekturmvvm.view.FormSiswa
+import com.example.arsitekturmvvm.view.TampilSiswa
 import com.example.arsitekturmvvm.viewmodel.SiswaViewModel
 
 enum class Navigasi {
@@ -45,6 +46,12 @@ fun SiswaApp(
                         viewModel.setSiswa(it)
                         navController.navigate(route = Navigasi.Detail.name)
                     }
+                )
+            }
+            composable(route = Navigasi.Detail.name){
+                TampilSiswa(
+                    statusUiSiswa = uiState.value,
+                    onBackButtonClicked = { cancelAndBackToFormulir(navController) }
                 )
             }
         }
